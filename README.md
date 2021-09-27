@@ -17,6 +17,6 @@ node server.js
 
 Open terminal from frontend directory and run
 ```bash
-npm install 
-npx start
+npm install
+npm start
 ```
