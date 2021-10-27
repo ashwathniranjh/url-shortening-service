@@ -3,6 +3,8 @@ const router = express.Router();
 const validUrl = require('valid-url')
 const shortid = require('shortid')
 const Url = require('../models/urls')
+const RequestIp = require('@supercharge/request-ip')
+
 
 router.get('/', (req,res) => {
     console.log('demo route reached.');
@@ -12,7 +14,7 @@ router.get('/', (req,res) => {
 router.post('/shorter', async (req, res) => {
     //console.log(req);
     const {longUrl} = req.body;
-    const userIP = req.ip;
+    const userIP = RequestIp.getClientIp(req)
 
     if(!validUrl.isUri('http:localhost:5000')){
         return res.status(401).json('Invalid base URL')
